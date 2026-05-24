@@ -1,9 +1,3 @@
-"""
-HR Analytics — Data Cleaning & Processing Script
-Author: Praveena
-Description: Cleans and transforms 10,000+ employee records,
-             generates KPIs for attendance, leave, and productivity.
-"""
 
 import pandas as pd
 import numpy as np
@@ -16,9 +10,9 @@ warnings.filterwarnings('ignore')
 np.random.seed(99)
 N = 10000
 
-# ─────────────────────────────────────────
+
 # 1. GENERATE EMPLOYEE DATASET
-# ─────────────────────────────────────────
+
 departments  = ['Engineering', 'Sales', 'HR', 'Finance', 'Marketing', 'Operations']
 leave_types  = ['Sick', 'Casual', 'Earned', 'Maternity/Paternity', 'Unpaid']
 statuses     = ['Active', 'Resigned', 'On Leave']
@@ -50,9 +44,9 @@ df = pd.DataFrame({
                        for i in range(N)],
 })
 
-# ─────────────────────────────────────────
+
 # 2. DATA CLEANING
-# ─────────────────────────────────────────
+
 print("=" * 55)
 print("       HR ANALYTICS — DATA CLEANING REPORT")
 print("=" * 55)
@@ -79,9 +73,9 @@ df['productivity_score'] = (
 
 print(f"\n✅ After cleaning: {len(df):,} records — 0 missing values")
 
-# ─────────────────────────────────────────
+
 # 3. KPI SUMMARY
-# ─────────────────────────────────────────
+
 print("\n── KEY HR KPIs ───────────────────────────────────────")
 active = df[df['status'] == 'Active']
 print(f"   Total Employees    : {len(df):,}")
@@ -102,9 +96,9 @@ dept_summary = df.groupby('department').agg(
 ).round(1)
 print(dept_summary.to_string())
 
-# ─────────────────────────────────────────
+
 # 4. VISUALIZATIONS
-# ─────────────────────────────────────────
+
 fig, axes = plt.subplots(2, 3, figsize=(18, 11))
 fig.suptitle("HR Analytics Dashboard — Praveena", fontsize=16,
              fontweight='bold', y=0.98)
